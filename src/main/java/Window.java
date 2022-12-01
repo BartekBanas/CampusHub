@@ -82,12 +82,12 @@ public class Window {
                             if ((currentClass.ID) == clas.getId())
 
                                 for (StudentEntity student : App.studentsList) {
-                                    if(student.getClassId() == clas.getId()) {
+                                    if (student.getClassId() == clas.getId()) {
                                         App.entityManager.remove(student);
                                     }
                                 }
 
-                                App.entityManager.remove(clas);
+                            App.entityManager.remove(clas);
                         }
 
                         App.transaction.commit();
@@ -478,4 +478,5 @@ public class Window {
     public JComponent $$$getRootComponent$$$() {
         return rootPanel;
     }
+
 }

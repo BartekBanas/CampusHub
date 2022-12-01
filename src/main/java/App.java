@@ -95,8 +95,15 @@ public class App {
 
         for (StudentEntity studentEntity : TempStudentsList) {
             studentsList.add(studentEntity);
-            college.listOfClasses.get(studentEntity.getClassId() - 1).
-                    setStudent(new Student(studentEntity.getName(), studentEntity.getSurname(), studentEntity.getId()));
+
+            for (Class clas : college.listOfClasses) {
+                if(clas.ID == studentEntity.getClassId()) {
+                    clas.setStudent(new Student(studentEntity.getName(), studentEntity.getSurname(), studentEntity.getId()));
+                }
+            }
+
+//            college.listOfClasses.get(studentEntity.getClassId() - 1).
+//                    setStudent(new Student(studentEntity.getName(), studentEntity.getSurname(), studentEntity.getId()));
             System.out.println(studentEntity);
         }
     }
