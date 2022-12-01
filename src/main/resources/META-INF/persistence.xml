@@ -7,14 +7,16 @@
     <class>entity.StudentEntity</class>
     <class>entity.ClassEntity</class>
     <class>entity.ClassContainerEntity</class>
+      <class>entity.RatingEntity</class>
 
-    <properties>
+      <properties>
       <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/dziennik"/>
       <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
       <property name="hibernate.connection.user" value="root"/>
       <property name="hibernate.connection.password" value="mysql"/>
       <property name="hibernate.show_sql" value="true"/>
-    </properties>
+          <property name="hibernate.connection.username" value="root"/>
+      </properties>
 
   </persistence-unit>
 </persistence>
