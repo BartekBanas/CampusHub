@@ -2,12 +2,9 @@ package entity;
 
 import jakarta.persistence.*;
 
-import static org.example.App.studentsList;
-
 @Entity
 @Table(name = "students", schema = "dziennik")
-public class Student {
-
+public class StudentsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -21,10 +18,7 @@ public class Student {
     @Basic
     @Column(name = "points")
     private int points;
-    @ManyToOne
-    @JoinColumn(foreignKey = @ForeignKey(name = "classId"))
-    private Class aClass;
-
+    @Basic
     @Column(name = "classID")
     private Integer classId;
 
@@ -73,7 +67,7 @@ public class Student {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Student that = (Student) o;
+        StudentsEntity that = (StudentsEntity) o;
 
         if (id != that.id) return false;
         if (points != that.points) return false;
@@ -96,12 +90,12 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Students{" +
-                "id =" + id +
-                ", name ='" + name + '\'' +
-                ", surname ='" + surname + '\'' +
-                ", points =" + points +
-                ", classId =" + classId +
+        return "StudentsEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", points=" + points +
+                ", classId=" + classId +
                 '}';
     }
 }

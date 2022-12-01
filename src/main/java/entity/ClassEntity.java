@@ -6,7 +6,7 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "classes", schema = "dziennik")
-public class Class {
+public class ClassEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -58,7 +58,7 @@ public class Class {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Class that = (Class) o;
+        ClassEntity that = (ClassEntity) o;
 
         if (id != that.id) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
@@ -77,14 +77,14 @@ public class Class {
         return result;
     }
 
-    @OneToMany(mappedBy = "aClass")
-    private Collection<Student> student;
-
-    public Collection<Student> getStudent() {
-        return student;
-    }
-
-    public void setStudent(Collection<Student> student) {
-        this.student = student;
-    }
+//    @OneToMany(mappedBy = "aClass")
+//    private Collection<StudentsEntity> studentEntity;
+//
+//    public Collection<StudentsEntity> getStudent() {
+//        return studentEntity;
+//    }
+//
+//    public void setStudent(Collection<StudentsEntity> studentEntity) {
+//        this.studentEntity = studentEntity;
+//    }
 }

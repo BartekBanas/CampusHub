@@ -4,9 +4,9 @@
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="3.0">
   <persistence-unit name="default">
-    <class>entity.Student</class>
-    <class>entity.Class</class>
-    <class>entity.ClassContainer</class>
+    <class>entity.StudentsEntity</class>
+    <class>entity.ClassEntity</class>
+    <class>entity.ClassContainerEntity</class>
 
     <properties>
       <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/dziennik"/>
