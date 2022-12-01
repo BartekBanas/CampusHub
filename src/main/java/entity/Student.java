@@ -4,7 +4,11 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "students", schema = "dziennik")
-public class Students {
+public class Student {
+    public Student() {
+
+    }
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -67,7 +71,7 @@ public class Students {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Students that = (Students) o;
+        Student that = (Student) o;
 
         if (id != that.id) return false;
         if (points != that.points) return false;
@@ -86,5 +90,16 @@ public class Students {
         result = 31 * result + points;
         result = 31 * result + (classId != null ? classId.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Students{" +
+                "id =" + id +
+                ", name ='" + name + '\'' +
+                ", surname ='" + surname + '\'' +
+                ", points =" + points +
+                ", classId =" + classId +
+                '}';
     }
 }
