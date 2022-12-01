@@ -37,13 +37,6 @@ public class Window {
         {
             @Override
             public void mouseClicked(MouseEvent e) {
-//                int i = 0;
-//                for (Map.Entry<String, Class> entry : collage.classes.entrySet())
-//                {
-//                    if(i == listOfClasses.getSelectedRow()) {
-//                        currentClass = entry.getValue();
-//                    }   i++;
-//                }
 
                 currentClass = college.listOfClasses.get(listOfClasses.getSelectedRow());
 
@@ -79,7 +72,7 @@ public class Window {
                         App.transaction.begin();
 
                         for (ClassEntity clas : App.classEntityList) {
-                            if ((currentClass.ID) == clas.getId())
+                            if ((currentClass.ID) == clas.getId()) {
 
                                 for (StudentEntity student : App.studentsList) {
                                     if (student.getClassId() == clas.getId()) {
@@ -87,7 +80,8 @@ public class Window {
                                     }
                                 }
 
-                            App.entityManager.remove(clas);
+                                App.entityManager.remove(clas);
+                            }
                         }
 
                         App.transaction.commit();
@@ -162,6 +156,23 @@ public class Window {
             public void actionPerformed(ActionEvent e) {
                 double pointsToAdd = Double.parseDouble(pointsToAddTextfield.getText());
 
+                try {
+                    App.transaction.begin();
+
+                    for (StudentEntity student : App.studentsList) {
+                        if ((currentClass.studentsList.get(listOfStudents.getSelectedRow()).ID) == student.getId()) {
+                            student.setPoints((int) (student.getPoints() + pointsToAdd));
+                        }
+                    }
+
+                    App.transaction.commit();
+                } finally {
+                    if (App.transaction.isActive()) {
+                        App.transaction.rollback();
+                    }
+                }
+
+
                 currentClass.studentsList.get(listOfStudents.getSelectedRow()).points += pointsToAdd;
 
                 UpdateTables();
@@ -199,6 +210,21 @@ public class Window {
                         String newName = JOptionPane.showInputDialog("Enter a new name");
                         if (!newName.isEmpty()) {
                             currentClass.studentsList.get(listOfStudents.getSelectedRow()).name = newName;
+                            try {
+                                App.transaction.begin();
+
+                                for (StudentEntity student : App.studentsList) {
+                                    if ((currentClass.studentsList.get(listOfStudents.getSelectedRow()).ID) == student.getId()) {
+                                        student.setName(newName);
+                                    }
+                                }
+
+                                App.transaction.commit();
+                            } finally {
+                                if (App.transaction.isActive()) {
+                                    App.transaction.rollback();
+                                }
+                            }
                         }
                     } catch (Exception f) {
                         System.out.println("Not so much of a name, it it?");
@@ -209,6 +235,21 @@ public class Window {
                         ;
                         if (!newSurname.isEmpty()) {
                             currentClass.studentsList.get(listOfStudents.getSelectedRow()).surname = newSurname;
+                            try {
+                                App.transaction.begin();
+
+                                for (StudentEntity student : App.studentsList) {
+                                    if ((currentClass.studentsList.get(listOfStudents.getSelectedRow()).ID) == student.getId()) {
+                                        student.setSurname(newSurname);
+                                    }
+                                }
+
+                                App.transaction.commit();
+                            } finally {
+                                if (App.transaction.isActive()) {
+                                    App.transaction.rollback();
+                                }
+                            }
                         }
                     } catch (Exception f) {
                         System.out.println("Not so much of a surname, it it?");
@@ -218,6 +259,21 @@ public class Window {
                         String newPoints = JOptionPane.showInputDialog("Enter a new amount of points");
                         if (!newPoints.isEmpty()) {
                             currentClass.studentsList.get(listOfStudents.getSelectedRow()).points = Double.parseDouble(newPoints);
+                            try {
+                                App.transaction.begin();
+
+                                for (StudentEntity student : App.studentsList) {
+                                    if ((currentClass.studentsList.get(listOfStudents.getSelectedRow()).ID) == student.getId()) {
+                                        student.setPoints(Integer.parseInt(newPoints));
+                                    }
+                                }
+
+                                App.transaction.commit();
+                            } finally {
+                                if (App.transaction.isActive()) {
+                                    App.transaction.rollback();
+                                }
+                            }
                         }
                     } catch (Exception f) {
                         System.out.println("Not so much of a number, it it?");
