@@ -80,6 +80,13 @@ public class Window {
 
                         for (ClassEntity clas : App.classEntityList) {
                             if ((currentClass.ID) == clas.getId())
+
+                                for (StudentEntity student : App.studentsList) {
+                                    if(student.getClassId() == clas.getId()) {
+                                        App.entityManager.remove(student);
+                                    }
+                                }
+
                                 App.entityManager.remove(clas);
                         }
 
