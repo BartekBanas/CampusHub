@@ -42,6 +42,7 @@ public class Class {
                 studentEntity.setClassId(ID);
 
                 App.entityManager.persist(studentEntity);
+                App.studentsList.add(studentEntity);
 
                 App.transaction.commit();
             } finally {

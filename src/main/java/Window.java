@@ -1,3 +1,6 @@
+import entity.ClassEntity;
+import entity.StudentEntity;
+
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.table.DefaultTableModel;
@@ -27,8 +30,8 @@ public class Window {
     public ClassContainer collage;
     private static Class currentClass;
 
-    public Window(ClassContainer collage) {
-        this.collage = collage;
+    public Window(ClassContainer college) {
+        this.collage = college;
         createClassTable();
         listOfClasses.addMouseListener(new MouseListener() //Opening list of a selected class
         {
@@ -42,7 +45,7 @@ public class Window {
 //                    }   i++;
 //                }
 
-                currentClass = collage.listOfClasses.get(listOfClasses.getSelectedRow());
+                currentClass = college.listOfClasses.get(listOfClasses.getSelectedRow());
 
                 createStudentsTable();
             }
@@ -70,12 +73,43 @@ public class Window {
                 DefaultTableModel tblModel = (DefaultTableModel) listOfStudents.getModel();
 
                 if (listOfStudents.getSelectedRowCount() == 0) {
-                    collage.listOfClasses.remove(currentClass);
+                    college.listOfClasses.remove(currentClass);
+
+                    try {
+                        App.transaction.begin();
+
+                        for (ClassEntity clas : App.classEntityList) {
+                            if ((currentClass.ID) == clas.getId())
+                                App.entityManager.remove(clas);
+                        }
+
+                        App.transaction.commit();
+                    } finally {
+                        if (App.transaction.isActive()) {
+                            App.transaction.rollback();
+                        }
+                    }
 
                     UpdateTables();
                 }
 
                 if (listOfStudents.getSelectedRowCount() == 1) {
+
+                    try {
+                        App.transaction.begin();
+
+                        for (StudentEntity student : App.studentsList) {
+                            if ((currentClass.studentsList.get(listOfStudents.getSelectedRow()).ID) == student.getId())
+                                App.entityManager.remove(student);
+                        }
+
+                        App.transaction.commit();
+                    } finally {
+                        if (App.transaction.isActive()) {
+                            App.transaction.rollback();
+                        }
+                    }
+
                     currentClass.studentsList.remove(listOfStudents.getSelectedRow());
 
                     UpdateTables();
@@ -100,7 +134,7 @@ public class Window {
         addClassButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                collage.addClass(classNameToAddTextField.getText());
+                college.addClass(classNameToAddTextField.getText());
 
                 UpdateTables();
             }
@@ -109,8 +143,8 @@ public class Window {
         sortDataButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                collage.listOfClasses.forEach(Class::sortByName);
-                collage.sortClasses();
+                college.listOfClasses.forEach(Class::sortByName);
+                college.sortClasses();
 
                 UpdateTables();
             }

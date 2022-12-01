@@ -9,7 +9,6 @@ import jakarta.persistence.Persistence;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class App {
     public static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
@@ -88,15 +87,16 @@ public class App {
         college.ID = tempClassContainerEntityList.get(0).getId();
 
         for (ClassEntity classEntity : tempCassEntityList) {
-            college.addClass(new Class(classEntity.getName(), classEntity.getCapacity(), classEntity.getId()));
+            classEntityList.add(classEntity);
+            college.setClass(new Class(classEntity.getName(), classEntity.getCapacity(), classEntity.getId()));
             //System.out.println(classEntity);
 
         }
 
         for (StudentEntity studentEntity : TempStudentsList) {
-//            college.garbageClassMap.get(tempCassEntityList.get(studentEntity.getClassId() - 1).getName()).
+            studentsList.add(studentEntity);
             college.listOfClasses.get(studentEntity.getClassId() - 1).
-                    setStudent(new Student(studentEntity.getName(), studentEntity.getSurname()));
+                    setStudent(new Student(studentEntity.getName(), studentEntity.getSurname(), studentEntity.getId()));
             System.out.println(studentEntity);
         }
     }

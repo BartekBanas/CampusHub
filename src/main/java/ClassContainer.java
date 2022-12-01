@@ -1,3 +1,6 @@
+import entity.ClassEntity;
+import entity.StudentEntity;
+
 import java.util.*;
 
 public class ClassContainer {
@@ -15,7 +18,7 @@ public class ClassContainer {
 
     List<Class> listOfClasses = new ArrayList<>();
 
-    public void addClass(Class clas) {
+    public void setClass(Class clas) {
         garbageClassMap.put(name, new Class(clas.className, clas.capacity, clas.ID));
         listOfClasses.add(garbageClassMap.get(name));
     }
@@ -28,6 +31,24 @@ public class ClassContainer {
     public void addClass(String name) {
         garbageClassMap.put(name, new Class(name));
         listOfClasses.add(garbageClassMap.get(name));
+
+        try {
+            App.transaction.begin();
+
+            ClassEntity classEntity = new ClassEntity();
+            classEntity.setName(name);
+            classEntity.setCapacity(20);
+            classEntity.setContainerId(ID);
+
+            App.entityManager.persist(classEntity);
+            App.classEntityList.add(classEntity);
+
+            App.transaction.commit();
+        } finally {
+            if (App.transaction.isActive()) {
+                App.transaction.rollback();
+            }
+        }
     }
 
     public void removeClass(String name) {
