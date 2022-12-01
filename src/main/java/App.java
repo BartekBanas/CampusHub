@@ -51,8 +51,8 @@ public class App {
         Student s4 = new Student("Randy", "Marsh", StudentCondition.present, 1999, 5);
         Student s5 = new Student("Matt", "Wentworth", StudentCondition.present, 2000, 9);
 
-        AGH.addClass(new Class("Programming", 8));
-        AGH.addClass("metallurgy", 100);
+//        AGH.addClass(new Class("Programming", 8));
+//        AGH.addClass("metallurgy", 100);
 
 //        AGH.garbageClassMap.get("Programming").addStudent(s1);
 //        AGH.garbageClassMap.get("Programming").addStudent(s2);
@@ -91,12 +91,13 @@ public class App {
 
         for (ClassEntity classEntity : tempCassEntityList) {
             college.addClass(new Class(classEntity.getName(), classEntity.getCapacity(), classEntity.getId()));
-            System.out.println(classEntity);
+            //System.out.println(classEntity);
 
         }
 
         for (StudentEntity studentEntity : TempStudentsList) {
-            college.garbageClassMap.get(tempCassEntityList.get(studentEntity.getClassId() - 1).getName()).
+//            college.garbageClassMap.get(tempCassEntityList.get(studentEntity.getClassId() - 1).getName()).
+            college.listOfClasses.get(studentEntity.getClassId() - 1).
                     addStudent(new Student(studentEntity.getName(), studentEntity.getSurname()));
             System.out.println(studentEntity);
         }
