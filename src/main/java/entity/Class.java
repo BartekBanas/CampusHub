@@ -2,6 +2,8 @@ package entity;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+
 @Entity
 @Table(name = "classes", schema = "dziennik")
 public class Class {
@@ -73,5 +75,16 @@ public class Class {
         result = 31 * result + (capacity != null ? capacity.hashCode() : 0);
         result = 31 * result + (containerId != null ? containerId.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "aClass")
+    private Collection<Student> student;
+
+    public Collection<Student> getStudent() {
+        return student;
+    }
+
+    public void setStudent(Collection<Student> student) {
+        this.student = student;
     }
 }

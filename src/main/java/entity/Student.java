@@ -22,7 +22,10 @@ public class Student {
     @Basic
     @Column(name = "points")
     private int points;
-    @Basic
+    @ManyToOne
+    @JoinColumn(foreignKey = @ForeignKey(name = "classId"))
+    private Class aClass;
+
     @Column(name = "classID")
     private Integer classId;
 
