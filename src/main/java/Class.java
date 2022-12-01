@@ -1,3 +1,6 @@
+import entity.StudentEntity;
+import jakarta.persistence.EntityManager;
+
 import java.util.*;
 
 public class Class {
@@ -27,8 +30,32 @@ public class Class {
     }
 
     public void addStudent(Student student) {
-        if(studentsList.size() < capacity) {
+        if (studentsList.size() < capacity) {
             studentsList.add(student);
+
+            try {
+                App.transaction.begin();
+
+                StudentEntity studentEntity = new StudentEntity();
+                studentEntity.setName(student.name);
+                studentEntity.setSurname(student.surname);
+                studentEntity.setClassId(ID);
+
+                App.entityManager.persist(studentEntity);
+
+                App.transaction.commit();
+            } finally {
+                if (App.transaction.isActive()) {
+                    App.transaction.rollback();
+                }
+            }
+        }
+    }
+
+    public void setStudent(Student student) {
+        if (studentsList.size() < capacity) {
+            studentsList.add(student);
+
         }
     }
 
@@ -74,7 +101,7 @@ public class Class {
         List<Student> listToReturn = new ArrayList<>();
 
         for (Student student : studentsList) {
-            if(student.surname.toLowerCase().contains(partOfSurname.toLowerCase()) ||
+            if (student.surname.toLowerCase().contains(partOfSurname.toLowerCase()) ||
                     student.name.toLowerCase().contains(partOfSurname.toLowerCase()))
                 listToReturn.add(student);
         }

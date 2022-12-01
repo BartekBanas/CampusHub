@@ -41,10 +41,6 @@ public class App {
 //        }
 
 
-        entityManager.close();
-        entityManagerFactory.close();
-
-
         Student s1 = new Student("John", "Cena", StudentCondition.present, 2000, 7);
         Student s2 = new Student("Alex", "Woodrow", StudentCondition.present, 2001, 0);
         Student s3 = new Student("Petter", "Griffin", StudentCondition.present, 1998, 2);
@@ -68,6 +64,8 @@ public class App {
             }
         });
 
+        //entityManager.close();
+        //entityManagerFactory.close();
     }
 
     private static void createGUI(ClassContainer collage) {
@@ -98,7 +96,7 @@ public class App {
         for (StudentEntity studentEntity : TempStudentsList) {
 //            college.garbageClassMap.get(tempCassEntityList.get(studentEntity.getClassId() - 1).getName()).
             college.listOfClasses.get(studentEntity.getClassId() - 1).
-                    addStudent(new Student(studentEntity.getName(), studentEntity.getSurname()));
+                    setStudent(new Student(studentEntity.getName(), studentEntity.getSurname()));
             System.out.println(studentEntity);
         }
     }
