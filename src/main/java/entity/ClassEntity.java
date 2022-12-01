@@ -77,7 +77,17 @@ public class ClassEntity {
         return result;
     }
 
-//    @OneToMany(mappedBy = "aClass")
+    @Override
+    public String toString() {
+        return "ClassEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", capacity=" + capacity +
+                ", containerId=" + containerId +
+                '}';
+    }
+
+    //    @OneToMany(mappedBy = "aClass")
 //    private Collection<StudentsEntity> studentEntity;
 //
 //    public Collection<StudentsEntity> getStudent() {

@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class Class {
+    int ID;
     String className;
     List<Student> studentsList = new ArrayList<>();
 
@@ -17,6 +18,12 @@ public class Class {
     public Class(String className, int capacity) {
         this.className = className;
         this.capacity = capacity;
+    }
+
+    public Class(String className, int capacity, int id) {
+        this.className = className;
+        this.capacity = capacity;
+        this.ID = id;
     }
 
     public void addStudent(Student student) {

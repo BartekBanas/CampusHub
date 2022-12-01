@@ -2,6 +2,7 @@ import java.util.*;
 
 public class ClassContainer {
     public String name = "College";
+    public int ID = 0;
 
     public ClassContainer() {
     }
@@ -13,6 +14,11 @@ public class ClassContainer {
     Map<String, Class> garbageClassMap = new LinkedHashMap<>();
 
     List<Class> listOfClasses = new ArrayList<>();
+
+    public void addClass(Class clas) {
+        garbageClassMap.put(name, new Class(clas.className, clas.capacity, clas.ID));
+        listOfClasses.add(garbageClassMap.get(name));
+    }
 
     public void addClass(String name, int capacity) {
         garbageClassMap.put(name, new Class(name, capacity));
