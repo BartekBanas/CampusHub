@@ -1,5 +1,6 @@
 import entity.ClassEntity;
 import entity.ClassContainerEntity;
+import entity.RatingEntity;
 import entity.StudentEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -18,6 +19,8 @@ public class App {
     public static List<StudentEntity> studentsList = new ArrayList<>();
     public static List<ClassEntity> classEntityList = new ArrayList<>();
     public static List<ClassContainerEntity> classContainerEntityList = new ArrayList<>();
+
+    public static List<RatingEntity> ratingEntityList = new ArrayList<>();
 
     public static void main(String[] args) {
         ClassContainer AGH = new ClassContainer();
@@ -82,6 +85,7 @@ public class App {
         List<StudentEntity> TempStudentsList = entityManager.createQuery("SELECT a FROM StudentEntity a").getResultList();
         List<ClassEntity> tempCassEntityList = entityManager.createQuery("SELECT a FROM ClassEntity a").getResultList();
         List<ClassContainerEntity> tempClassContainerEntityList = entityManager.createQuery("select a FROM ClassContainerEntity a").getResultList();
+        ratingEntityList = entityManager.createQuery("SELECT a FROM RatingEntity a").getResultList();
 
         college.name = tempClassContainerEntityList.get(0).getName();
         college.ID = tempClassContainerEntityList.get(0).getId();
