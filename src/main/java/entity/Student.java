@@ -2,12 +2,11 @@ package entity;
 
 import jakarta.persistence.*;
 
+import static org.example.App.studentsList;
+
 @Entity
 @Table(name = "students", schema = "dziennik")
 public class Student {
-    public Student() {
-
-    }
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
