@@ -1,6 +1,15 @@
 import java.util.*;
 
 public class ClassContainer {
+    public String name = "College";
+
+    public ClassContainer() {
+    }
+
+    public ClassContainer(String name) {
+        this.name = name;
+    }
+
     Map<String, Class> garbageClassMap = new LinkedHashMap<>();
 
     List<Class> listOfClasses = new ArrayList<>();

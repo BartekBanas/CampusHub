@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "students", schema = "dziennik")
-public class StudentsEntity {
+public class StudentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -67,7 +67,7 @@ public class StudentsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        StudentsEntity that = (StudentsEntity) o;
+        StudentEntity that = (StudentEntity) o;
 
         if (id != that.id) return false;
         if (points != that.points) return false;
