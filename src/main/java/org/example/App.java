@@ -1,6 +1,5 @@
 package org.example;
 
-import entity.StudentsEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
