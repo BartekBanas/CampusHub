@@ -56,7 +56,6 @@ public class Class {
     public void setStudent(Student student) {
         if (studentsList.size() < capacity) {
             studentsList.add(student);
-
         }
     }
 
@@ -85,17 +84,6 @@ public class Class {
 
     public void removePoints(Student student, double amount) {
         student.points -= amount;
-    }
-
-    public Student search(String searchedSurname) {
-        for (Student student : studentsList) {
-            if (student.surname.compareTo(searchedSurname) == 0) {
-                return student;
-            }
-        }
-
-        System.out.println("Student of a given name could not be found\n");
-        return new Student("non-existent", "non-existent", StudentCondition.ill, 0, 0);
     }
 
     public List<Student> searchPartial(String partOfSurname) {
