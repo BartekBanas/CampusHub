@@ -16,7 +16,7 @@ public class App {
     public static EntityManager entityManager = entityManagerFactory.createEntityManager();
     public static EntityTransaction transaction = entityManager.getTransaction();
 
-    public static List<StudentEntity> studentsList = new ArrayList<>();
+    public static List<StudentEntity> studentEntityList = new ArrayList<>();
     public static List<ClassEntity> classEntityList = new ArrayList<>();
     public static List<ClassContainerEntity> classContainerEntityList = new ArrayList<>();
 
@@ -67,7 +67,7 @@ public class App {
         }
 
         for (StudentEntity studentEntity : TempStudentsList) {
-            studentsList.add(studentEntity);
+            studentEntityList.add(studentEntity);
 
             for (Class clas : college.listOfClasses) {
                 if(clas.ID == studentEntity.getClassId()) {
@@ -79,7 +79,7 @@ public class App {
 
     static void PrintStudents() {
         System.out.println("List of Students: ");
-        for (StudentEntity studentEntity : studentsList) {
+        for (StudentEntity studentEntity : studentEntityList) {
             System.out.println(studentEntity);
         }
     }

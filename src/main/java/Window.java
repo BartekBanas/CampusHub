@@ -81,7 +81,7 @@ public class Window {
                         for (ClassEntity clas : App.classEntityList) {
                             if ((currentClass.ID) == clas.getId()) {
 
-                                for (StudentEntity student : App.studentsList) {
+                                for (StudentEntity student : App.studentEntityList) {
                                     if (student.getClassId() == clas.getId()) {
                                         App.entityManager.remove(student);
                                     }
@@ -106,7 +106,7 @@ public class Window {
                     try {
                         App.transaction.begin();
 
-                        for (StudentEntity student : App.studentsList) {
+                        for (StudentEntity student : App.studentEntityList) {
                             if ((currentClass.studentsList.get(listOfStudents.getSelectedRow()).ID) == student.getId())
                                 App.entityManager.remove(student);
                         }
@@ -166,9 +166,10 @@ public class Window {
                 try {
                     App.transaction.begin();
 
-                    for (StudentEntity student : App.studentsList) {
+                    for (StudentEntity student : App.studentEntityList) {
                         if ((currentClass.studentsList.get(listOfStudents.getSelectedRow()).ID) == student.getId()) {
                             student.setPoints((int) (student.getPoints() + pointsToAdd));
+                            System.out.println("Points too addd");
                         }
                     }
 
@@ -225,7 +226,7 @@ public class Window {
                             try {
                                 App.transaction.begin();
 
-                                for (StudentEntity student : App.studentsList) {
+                                for (StudentEntity student : App.studentEntityList) {
                                     if ((currentClass.studentsList.get(listOfStudents.getSelectedRow()).ID) == student.getId()) {
                                         student.setName(newName);
                                     }
@@ -250,7 +251,7 @@ public class Window {
                             try {
                                 App.transaction.begin();
 
-                                for (StudentEntity student : App.studentsList) {
+                                for (StudentEntity student : App.studentEntityList) {
                                     if ((currentClass.studentsList.get(listOfStudents.getSelectedRow()).ID) == student.getId()) {
                                         student.setSurname(newSurname);
                                     }
@@ -274,7 +275,7 @@ public class Window {
                             try {
                                 App.transaction.begin();
 
-                                for (StudentEntity student : App.studentsList) {
+                                for (StudentEntity student : App.studentEntityList) {
                                     if ((currentClass.studentsList.get(listOfStudents.getSelectedRow()).ID) == student.getId()) {
                                         student.setPoints(Integer.parseInt(newPoints));
                                     }

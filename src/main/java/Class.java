@@ -1,5 +1,4 @@
 import entity.StudentEntity;
-import jakarta.persistence.EntityManager;
 
 import java.util.*;
 
@@ -42,7 +41,7 @@ public class Class {
                 studentEntity.setClassId(ID);
 
                 App.entityManager.persist(studentEntity);
-                App.studentsList.add(studentEntity);
+                App.studentEntityList.add(studentEntity);
 
                 App.transaction.commit();
             } finally {
