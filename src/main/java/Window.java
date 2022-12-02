@@ -68,6 +68,10 @@ public class Window {
             public void actionPerformed(ActionEvent e) {
                 DefaultTableModel tblModel = (DefaultTableModel) listOfStudents.getModel();
 
+                if (currentClass == null) {
+                    throw new RuntimeException("No class selected\n");
+                }
+
                 if (listOfStudents.getSelectedRowCount() == 0) {
                     college.listOfClasses.remove(currentClass);
 
@@ -186,6 +190,7 @@ public class Window {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == 10) {
+
                     String word = filter_textbox_.getText();
 
                     if (currentClass != null) {
@@ -198,6 +203,10 @@ public class Window {
         changePropertiesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (currentClass == null) {
+                    return;
+                }
+
                 if (listOfStudents.getSelectedRowCount() == 0) {
                     String newName = JOptionPane.showInputDialog("Enter a new name");
 
@@ -362,7 +371,7 @@ public class Window {
         for (RatingEntity rating : App.ratingEntityList) {
             data[i][0] = rating.getSubject();
             data[i][1] = rating.getDate();
-            if (rating.getComment() != null || rating.getComment() == "") {
+            if (rating.getComment() != null && rating.getComment() != "") {
                 data[i][2] = rating.getComment();
             } else {
                 data[i][2] = "No comment";

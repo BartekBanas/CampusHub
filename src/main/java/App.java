@@ -26,38 +26,9 @@ public class App {
         ClassContainer AGH = new ClassContainer();
 
         StartUp(AGH);
-        PrintStudents();
+        //PrintStudents();
 
         System.out.print("Program operating college database\n");
-
-//        boolean again = true;
-//        while (again)
-//        {
-//            System.out.println("What action you wish to perform");
-//            Scanner in = new Scanner(System.in);
-//            System.out.print("Type in a figure name: ");
-//            String figureName = in.nextLine();
-//
-//
-//            switch (figureName.toLowerCase())
-//        }
-
-
-        Student s1 = new Student("John", "Cena", StudentCondition.present, 2000, 7);
-        Student s2 = new Student("Alex", "Woodrow", StudentCondition.present, 2001, 0);
-        Student s3 = new Student("Petter", "Griffin", StudentCondition.present, 1998, 2);
-        Student s4 = new Student("Randy", "Marsh", StudentCondition.present, 1999, 5);
-        Student s5 = new Student("Matt", "Wentworth", StudentCondition.present, 2000, 9);
-
-//        AGH.addClass(new Class("Programming", 8));
-//        AGH.addClass("metallurgy", 100);
-
-//        AGH.garbageClassMap.get("Programming").addStudent(s1);
-//        AGH.garbageClassMap.get("Programming").addStudent(s2);
-//        AGH.garbageClassMap.get("Programming").addStudent(s3);
-//        AGH.garbageClassMap.get("Programming").addStudent(s4);
-//        AGH.garbageClassMap.get("Programming").addStudent(s5);
-
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -93,8 +64,6 @@ public class App {
         for (ClassEntity classEntity : tempCassEntityList) {
             classEntityList.add(classEntity);
             college.setClass(new Class(classEntity.getName(), classEntity.getCapacity(), classEntity.getId()));
-            //System.out.println(classEntity);
-
         }
 
         for (StudentEntity studentEntity : TempStudentsList) {
@@ -105,10 +74,6 @@ public class App {
                     clas.setStudent(new Student(studentEntity.getName(), studentEntity.getSurname(), studentEntity.getId()));
                 }
             }
-
-//            college.listOfClasses.get(studentEntity.getClassId() - 1).
-//                    setStudent(new Student(studentEntity.getName(), studentEntity.getSurname(), studentEntity.getId()));
-            System.out.println(studentEntity);
         }
     }
 
