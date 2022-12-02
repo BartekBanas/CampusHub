@@ -362,7 +362,7 @@ public class Window {
         for (RatingEntity rating : App.ratingEntityList) {
             data[i][0] = rating.getSubject();
             data[i][1] = rating.getDate();
-            if (rating.getComment() != null) {
+            if (rating.getComment() != null || rating.getComment() == "") {
                 data[i][2] = rating.getComment();
             } else {
                 data[i][2] = "No comment";
