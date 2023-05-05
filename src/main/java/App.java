@@ -28,7 +28,7 @@ public class App {
         StartUp(AGH);
         //PrintStudents();
 
-        System.out.print("Program operating college database\n");
+        System.out.print("\nProgram operating college database with realtime connection to a MySql database through hibernate\n\n");
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
