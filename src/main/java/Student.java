@@ -7,6 +7,12 @@ public class Student implements Comparable<Student> {
 
     double points;
 
+    public Student(String name, String surname, int id) {
+        this.name = name;
+        this.surname = surname;
+        this.ID = id;
+    }
+
     public double getPoints() {
         return points;
     }
