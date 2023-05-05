@@ -3,6 +3,7 @@ package entity;
 import jakarta.persistence.*;
 
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 @Table(name = "classes", schema = "dziennik")
@@ -61,9 +62,9 @@ public class ClassEntity {
         ClassEntity that = (ClassEntity) o;
 
         if (id != that.id) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (capacity != null ? !capacity.equals(that.capacity) : that.capacity != null) return false;
-        if (containerId != null ? !containerId.equals(that.containerId) : that.containerId != null) return false;
+        if (!Objects.equals(name, that.name)) return false;
+        if (!Objects.equals(capacity, that.capacity)) return false;
+        if (!Objects.equals(containerId, that.containerId)) return false;
 
         return true;
     }

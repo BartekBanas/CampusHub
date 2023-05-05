@@ -2,6 +2,8 @@ package entity;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "classcontainer", schema = "dziennik")
 public class ClassContainerEntity {
@@ -37,7 +39,7 @@ public class ClassContainerEntity {
         ClassContainerEntity that = (ClassContainerEntity) o;
 
         if (id != that.id) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (!Objects.equals(name, that.name)) return false;
 
         return true;
     }
