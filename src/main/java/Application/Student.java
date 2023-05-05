@@ -34,7 +34,7 @@ public class Student implements Comparable<Student> {
         this.birthYear = 2000;
     }
 
-    public Student(String name, String surname, int id, double points) {
+    public Student( int id, String name, String surname, double points) {
         this.name = name;
         this.surname = surname;
         this.studentCondition = StudentCondition.absent;

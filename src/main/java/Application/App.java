@@ -73,7 +73,7 @@ public class App {
 
             for (Class clas : college.listOfClasses) {
                 if (clas.ID == studentEntity.getClassId()) {
-                    clas.setStudent(new Student(studentEntity.getName(), studentEntity.getSurname(), studentEntity.getId()));
+                    clas.setStudent(new Student(studentEntity.getId(), studentEntity.getName(), studentEntity.getSurname(), studentEntity.getPoints()));
                 }
             }
         }
