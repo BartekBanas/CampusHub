@@ -1,3 +1,5 @@
+package Application;
+
 import entity.ClassEntity;
 import entity.ClassContainerEntity;
 import entity.RatingEntity;
@@ -91,7 +93,7 @@ public class App {
 //    }
 //
 //    static void PrintClassContainers(){
-//        System.out.println("List of Class Containers: ");
+//        System.out.println("List of Application.Class Containers: ");
 //        for (ClassContainerEntity class1: classContainerEntityList) {
 //            System.out.println(class1);
 //        }

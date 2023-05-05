@@ -1,3 +1,5 @@
+package Application;
+
 public class Student implements Comparable<Student> {
     public int ID;
     String name;
@@ -42,8 +44,8 @@ public class Student implements Comparable<Student> {
     }
 
     public void print() {
-        System.out.println("Student " + name + " " + surname + "");
-        System.out.println("- Student's Condition: " + studentCondition);
+        System.out.println("Application.Student " + name + " " + surname + "");
+        System.out.println("- Application.Student's Condition: " + studentCondition);
         System.out.println("- Birth Year: " + birthYear);
         System.out.println("- Amount of points: " + points);
     }

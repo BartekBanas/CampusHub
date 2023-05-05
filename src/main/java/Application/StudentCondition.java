@@ -1,3 +1,5 @@
+package Application;
+
 public enum StudentCondition {
     present,
     late,

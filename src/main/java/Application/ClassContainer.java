@@ -1,3 +1,5 @@
+package Application;
+
 import entity.ClassEntity;
 
 import java.util.*;
@@ -67,13 +69,13 @@ public class ClassContainer {
     }
 
     public void summary() {
-        System.out.println("Summary of a Class Container:");
+        System.out.println("Summary of a Application.Class Container:");
         for (Map.Entry<String, Class> entry : garbageClassMap.entrySet())
         {
             double amountOfStudents =  entry.getValue().studentsList.size();
             double maximumCapacity = entry.getValue().capacity;
 
-            System.out.println("Class " + entry.getKey() + " is " +
+            System.out.println("Application.Class " + entry.getKey() + " is " +
                     amountOfStudents / maximumCapacity * 100 + "% full");
         }   System.out.println();
     }

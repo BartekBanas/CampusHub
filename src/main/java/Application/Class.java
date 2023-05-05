@@ -1,3 +1,5 @@
+package Application;
+
 import entity.StudentEntity;
 
 import java.util.*;
@@ -108,7 +110,7 @@ public class Class {
     }
 
     public void summary() {
-        System.out.println("Class " + className + " summary:");
+        System.out.println("Application.Class " + className + " summary:");
         for (Student student : studentsList) {
             student.print();
             System.out.println();
