@@ -2,6 +2,8 @@ package entity;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "students", schema = "dziennik")
 public class StudentEntity {
@@ -71,9 +73,9 @@ public class StudentEntity {
 
         if (id != that.id) return false;
         if (points != that.points) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (surname != null ? !surname.equals(that.surname) : that.surname != null) return false;
-        if (classId != null ? !classId.equals(that.classId) : that.classId != null) return false;
+        if (!Objects.equals(name, that.name)) return false;
+        if (!Objects.equals(surname, that.surname)) return false;
+        if (!Objects.equals(classId, that.classId)) return false;
 
         return true;
     }

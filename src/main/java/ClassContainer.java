@@ -1,5 +1,4 @@
 import entity.ClassEntity;
-import entity.StudentEntity;
 
 import java.util.*;
 
@@ -7,8 +6,7 @@ public class ClassContainer {
     public String name = "College";
     public int ID = 0;
 
-    public ClassContainer() {
-    }
+    public ClassContainer() {}
 
     public ClassContainer(String name) {
         this.name = name;

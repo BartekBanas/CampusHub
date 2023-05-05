@@ -23,7 +23,7 @@ public class App {
     public static List<RatingEntity> ratingEntityList = new ArrayList<>();
 
     public static void main(String[] args) {
-        ClassContainer AGH = new ClassContainer();
+        ClassContainer AGH = new ClassContainer("AGH");
 
         StartUp(AGH);
         //PrintStudents();
