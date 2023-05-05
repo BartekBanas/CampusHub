@@ -6,17 +6,12 @@ public class Student implements Comparable<Student> {
     String surname;
     StudentCondition studentCondition;
     int birthYear;
-
     double points;
 
     public Student(String name, String surname, int id) {
         this.name = name;
         this.surname = surname;
         this.ID = id;
-    }
-
-    public double getPoints() {
-        return points;
     }
 
     public Student(String name, String surname, StudentCondition studentCondition, int birthYear, double points) {
@@ -43,15 +38,15 @@ public class Student implements Comparable<Student> {
         this.points = points;
     }
 
+    @Override
+    public int compareTo(Student otherStudent) {
+        return this.surname.compareTo(otherStudent.surname);
+    }
+
     public void print() {
         System.out.println("Application.Student " + name + " " + surname + "");
         System.out.println("- Application.Student's Condition: " + studentCondition);
         System.out.println("- Birth Year: " + birthYear);
         System.out.println("- Amount of points: " + points);
-    }
-
-    @Override
-    public int compareTo(Student otherStudent) {
-        return this.surname.compareTo(otherStudent.surname);
     }
 }
