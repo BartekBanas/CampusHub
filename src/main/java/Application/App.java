@@ -72,7 +72,7 @@ public class App {
             studentEntityList.add(studentEntity);
 
             for (Class clas : college.listOfClasses) {
-                if(clas.ID == studentEntity.getClassId()) {
+                if (clas.ID == studentEntity.getClassId()) {
                     clas.setStudent(new Student(studentEntity.getName(), studentEntity.getSurname(), studentEntity.getId()));
                 }
             }
@@ -85,48 +85,4 @@ public class App {
             System.out.println(studentEntity);
         }
     }
-//    static void PrintClasses(){
-//        System.out.println("List of Classes: ");
-//        for (ClassEntity classEntity1 : classEntityList) {
-//            System.out.println(classEntity1);
-//        }
-//    }
-//
-//    static void PrintClassContainers(){
-//        System.out.println("List of Application.Class Containers: ");
-//        for (ClassContainerEntity class1: classContainerEntityList) {
-//            System.out.println(class1);
-//        }
-//    }
-
-//    static void addStudent() {
-//        Scanner in = new Scanner(System.in);
-//        System.out.print("Type in a figure name: ");
-//
-//        System.out.println("Type in a name: ");
-//        String name = in.nextLine();
-//        System.out.println("Type in a surname: ");
-//        String surname = in.nextLine();
-//        System.out.println("Type in a class ID: ");
-//        int classID = Integer.parseInt(in.nextLine());
-//
-//        try {
-//            transaction.begin();
-//
-//            StudentEntity studentEntity = new StudentEntity();
-//            studentEntity.setName(name);
-//            studentEntity.setSurname(surname);
-//            studentEntity.setClassId(classID);
-//
-//            entityManager.persist(studentEntity);
-//
-//            transaction.commit();
-//        } finally {
-//            if (transaction.isActive()) {
-//                transaction.rollback();
-//            }
-//        }
-//
-//        StartUp();
-//    }
 }
