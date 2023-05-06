@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "rating", schema = "dziennik")
-public class RatingEntity {
+public class RatingEntity extends AbstractEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
