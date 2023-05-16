@@ -171,7 +171,7 @@ public class Window {
                     for (StudentEntity student : App.studentEntityList) {
                         if ((currentClass.studentsList.get(listOfStudents.getSelectedRow()).ID) == student.getId()) {
                             student.setPoints((int) (student.getPoints() + pointsToAdd));
-                            System.out.println("Points too addd");
+                            System.out.println("Points too add");
                         }
                     }
 
@@ -582,5 +582,4 @@ public class Window {
     public JComponent $$$getRootComponent$$$() {
         return rootPanel;
     }
-
 }
